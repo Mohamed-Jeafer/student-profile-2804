@@ -3,7 +3,7 @@ import "./SearchBox.css"
 
 const SearchBox = ({searchChange}) => {
     return (
-        <div className="text-center">
+        <div id="searchbox" className="text-center searchbox">
             <input 
             className="text-center"
             type="search" 

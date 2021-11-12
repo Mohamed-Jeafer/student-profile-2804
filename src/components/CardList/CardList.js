@@ -1,14 +1,12 @@
 import React from "react";
 import './CardList.css'
 import Card from "../Card/Card";
-import { Col, Container, Row, Image } from 'react-bootstrap';
-
 
 const CardList = ({ students }) => {
 
     return (
-        <div>
-            <Container className='vertical-scrollable text-center'>
+        <div id="cardlist" className="container">
+            <div className="row align-items-center">
                 {
                     students.map(student => {
                         return (
@@ -25,7 +23,7 @@ const CardList = ({ students }) => {
                         )
                     })
                 }
-            </Container>
+            </div>
 
         </div>
     )

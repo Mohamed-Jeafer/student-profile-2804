@@ -1,12 +1,8 @@
-.vertical-scrollable {
-    position: absolute;
-    top: 120px;
-    bottom: 100px;
-    left: 50px;
-    width: auto;
-    overflow-y: scroll; 
-  }
-
-  /* .container {
-      max-width: 500px;
-  } */
+#cardlist {
+    background-color: white ;
+    display: inline-block;
+}
+.row {
+    text-align: center;
+    background-color: white;
+}

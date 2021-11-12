@@ -1,13 +1,3 @@
-/* .pa2 {
-    padding-top: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-left: 2px;
-  }
-
-  .pa2 {
-    padding-top: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
-    padding-left: 3px;
-  } */
+.searchbox {
+  background-color: lightgray;
+}
