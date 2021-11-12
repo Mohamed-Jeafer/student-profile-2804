@@ -7,6 +7,8 @@ img {
     background-color: white;
     border: 1px solid black;
     border-radius: 50%;
+    height:10vw;
+    width: 10vw;
 }
 
 .row {
@@ -25,16 +27,20 @@ img {
   }
 
 #studentName h1 {
+    white-space: nowrap;
     padding-top: 5px;
     font-family: Raleway;
     font-weight: bold;
     color: black;
     text-align: left;
+    font-size: 3vw;
 }
 
 #studentDetails li {
     text-align: left;
     margin-left: 2rem;
+    font-family: Raleway;
+    font-size: 1.5vw;
 }
 
 li {

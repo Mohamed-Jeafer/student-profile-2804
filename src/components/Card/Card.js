@@ -9,14 +9,14 @@ const Card = ({ id, name, email, pic, company, skill, grades }) => {
     return (
         <div className="box" >
             <div className="row align-items-center" >
-                <div className="col col-xl-4 col-lg-3 col-sm-2 colums">
+                <div className="col col-xl-4 col-lg-4 col-md-4 col-sm-4 colums">
                     <img className=""
                         alt={id}
                         src={pic}
                         width="100px"
                         height="100px"/>
                 </div>
-                <div className="col col-xl-6 col-lg-5 col-sm-4 colums" >
+                <div className="col col-xl-5 col-lg-5 col-md-5 col-sm-5 colums" >
                     <div className="row align-items-center" id="studentName">
                         <h1> {name} </h1>
                     </div>

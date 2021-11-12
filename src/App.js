@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./App.css"
 import CardList from './components/CardList/CardList'
 import SearchBox from './components/SearchBox/SearchBox'
+import Scroll from "./components/Scroll/Scroll"
 
 class App extends Component {
   constructor() {
@@ -40,9 +41,9 @@ class App extends Component {
         </div>
         <div className="row align-self-center">
           <div className="col">
-            <div className="body scroll">
+            <Scroll>
               <CardList students={filteredStudents} />
-            </div>
+            </Scroll>
           </div>
         </div>
       </div>
