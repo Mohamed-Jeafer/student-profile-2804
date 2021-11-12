@@ -7,8 +7,8 @@ img {
     background-color: white;
     border: 1px solid black;
     border-radius: 50%;
-    height:10vw;
-    width: 10vw;
+    height: calc(50px + 7vw);
+    width: calc(50px + 7vw);
 }
 
 .row {
@@ -33,14 +33,14 @@ img {
     font-weight: bold;
     color: black;
     text-align: left;
-    font-size: 3vw;
+    font-size: calc(10px + 2vw);
 }
 
 #studentDetails li {
     text-align: left;
     margin-left: 2rem;
     font-family: Raleway;
-    font-size: 1.5vw;
+    font-size: calc(10px + 0.5vw);
 }
 
 li {
