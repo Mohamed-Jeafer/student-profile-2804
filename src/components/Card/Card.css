@@ -1,24 +1,24 @@
 .box {
-    display: inline-block;
     border-bottom: 1px solid lightgrey;
 }
 
-img {
+.box img {
     background-color: white;
     border: 1px solid black;
     border-radius: 50%;
-    height: calc(50px + 7vw);
-    width: calc(50px + 7vw);
+    height: calc(30px + 7vw);
+    width: calc(30px + 7vw);
 }
 
-.row {
+.box .row {
+    display: flex;
+    flex-wrap: nowrap;
     background-color: white;
     border-bottom: 5 solid lightgrey;
 }
 
-.colums {
+.row .colums {
     background-color: white;
-    display: inline-block;
 }
 
 @font-face {

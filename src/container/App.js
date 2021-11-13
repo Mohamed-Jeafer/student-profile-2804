@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
-import "./App.css"
-import CardList from '../components/CardList/CardList'
-import SearchBox from '../components/SearchBox/SearchBox'
-import Scroll from "../components/Scroll/Scroll"
+import { connect } from 'react-redux';
+import CardList from '../components/CardList/CardList';
+import SearchBox from '../components/SearchBox/SearchBox';
+import Scroll from "../components/Scroll/Scroll";
 import ErrorBoundry from '../components/ErrorBoundry/ErrorBoundry';
+import { setSearchField } from '../actions';
+
+import "./App.css";
+
+const mapStateToProps = (state) => {
+  return {
+    searchField: state.searchField
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {onSearchChange: (event) => dispatch(setSearchField(event.target.value))}
+}
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       studentsList: [],
-      searchField: ''
     }
   }
 
@@ -23,21 +35,20 @@ class App extends Component {
       }).catch(err => console.error(err))
   }
 
-  onSearchChange = (event) => {
-    return this.setState({ searchField: event.target.value })
-  }
 
   render() {
-    const filteredStudents = this.state.studentsList.filter((student) => {
+    const { studentsList } = this.state
+    const { searchField, onSearchChange } = this.props
+    const filteredStudents = studentsList.filter((student) => {
       let fullName = `${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}`
-      return fullName.includes(this.state.searchField.toLowerCase())
+      return fullName.includes(searchField.toLowerCase())
     })
-    return (
+    return !studentsList.length ? <h1>LOADING...</h1> : (
       <div>
         <div className="header">
           <header>
             <h1>Student List</h1>
-            <SearchBox searchChange={this.onSearchChange} />
+            <SearchBox searchChange={onSearchChange} />
           </header>
         </div>
         <div className="row align-self-center">
@@ -54,4 +65,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default connect(mapStateToProps, mapDispatchToProps)(App)
