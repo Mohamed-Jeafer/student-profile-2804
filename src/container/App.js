@@ -8,10 +8,10 @@ import { setSearchField, requestStudents } from '../actions';
 
 import "./App.css";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     searchField: state.searchStudents.searchField,
-    studentsList: state.requestStudents.studentList,
+    studentsList: state.requestStudents.studentsList,
     isPending: state.requestStudents.isPending,
     error: state.requestStudents.error
   }
@@ -28,36 +28,42 @@ class App extends Component {
 
   componentDidMount() {
     document.body.style.backgroundColor = "lightgrey"
-    console.log(this.props.onRequestStudents())
     this.props.onRequestStudents()
   }
 
   render() {
     const { searchField, onSearchChange, studentsList, isPending } = this.props
-    console.log (studentsList)
-    const filteredStudents = studentsList.filter((student) => {
-      let fullName = `${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}`
-      return fullName.includes(searchField.toLowerCase())
-    })
-    return isPending ? <h1>LOADING...</h1> : (
-      <div>
-        <div className="header">
-          <header>
-            <h1>Student List</h1>
-            <SearchBox searchChange={onSearchChange} />
-          </header>
-        </div>
-        <div className="row align-self-center">
-          <div className="col">
-            <Scroll>
-              <ErrorBoundry>
-                <CardList students={filteredStudents} />
-              </ErrorBoundry>  
-            </Scroll>
+    if (studentsList) {
+      const filteredStudents = studentsList.filter((student) => {
+        let fullName = `${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}`
+        return fullName.includes(searchField.toLowerCase())
+      })
+      return isPending ? <h1>LOADING...</h1> : (
+        <div>
+          <div className="header">
+            <header>
+              <h1>Student List</h1>
+              <SearchBox searchChange={onSearchChange} />
+            </header>
+          </div>
+          <div className="row align-self-center">
+            <div className="col">
+              <Scroll>
+                <ErrorBoundry>
+                  <CardList students={filteredStudents} />
+                </ErrorBoundry>
+              </Scroll>
+            </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div>
+          <h1 color="red"> ERROR </h1>
+        </div>
+      )
+    }
   }
 }
 
