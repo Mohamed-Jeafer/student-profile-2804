@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
-import { searchStudents } from './reducers';
+import thunkMiddleware from 'redux-thunk';
+import { searchStudents, requestStudents } from './reducers';
 import App from './container/App';
 import reportWebVitals from './reportWebVitals';
 import './components/bootstrap.min.css'
 
-
+const rootReducer = combineReducers({searchStudents, requestStudents})
 const logger = createLogger()
-const store = createStore(searchStudents, applyMiddleware(logger))  // There is only one reducer, therefore no need to use root reducer
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger)) 
 
 ReactDOM.render(
   <React.StrictMode>

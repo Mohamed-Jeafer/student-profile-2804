@@ -4,46 +4,42 @@ import CardList from '../components/CardList/CardList';
 import SearchBox from '../components/SearchBox/SearchBox';
 import Scroll from "../components/Scroll/Scroll";
 import ErrorBoundry from '../components/ErrorBoundry/ErrorBoundry';
-import { setSearchField } from '../actions';
+import { setSearchField, requestStudents } from '../actions';
 
 import "./App.css";
 
 const mapStateToProps = (state) => {
   return {
-    searchField: state.searchField
+    searchField: state.searchStudents.searchField,
+    studentsList: state.requestStudents.studentList,
+    isPending: state.requestStudents.isPending,
+    error: state.requestStudents.error
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {onSearchChange: (event) => dispatch(setSearchField(event.target.value))}
+  return {
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    onRequestStudents: () => dispatch(requestStudents())
+  }
 }
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      studentsList: [],
-    }
-  }
 
   componentDidMount() {
     document.body.style.backgroundColor = "lightgrey"
-    fetch('https://api.hatchways.io/assessment/students')
-      .then(response => response.json())
-      .then(studentsobj => {
-        this.setState({ studentsList: studentsobj.students })
-      }).catch(err => console.error(err))
+    console.log(this.props.onRequestStudents())
+    this.props.onRequestStudents()
   }
 
-
   render() {
-    const { studentsList } = this.state
-    const { searchField, onSearchChange } = this.props
+    const { searchField, onSearchChange, studentsList, isPending } = this.props
+    console.log (studentsList)
     const filteredStudents = studentsList.filter((student) => {
       let fullName = `${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}`
       return fullName.includes(searchField.toLowerCase())
     })
-    return !studentsList.length ? <h1>LOADING...</h1> : (
+    return isPending ? <h1>LOADING...</h1> : (
       <div>
         <div className="header">
           <header>
