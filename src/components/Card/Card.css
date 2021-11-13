@@ -23,7 +23,7 @@ img {
 
 @font-face {
     font-family: Raleway;
-    src: url("Raleway-VariableFont_wght.ttf") format("truetype");
+    src: url("../../container/Raleway-VariableFont_wght.ttf") format("truetype");
   }
 
 #studentName h1 {

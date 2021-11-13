@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { createStore } from 'redux';
+import { Provider, connect } from 'react-redux';
+import { searchStudents } from './reducers';
+import App from './container/App';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
+import './components/bootstrap.min.css'
 
 
+const store = createStore(searchStudents)
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App store={store} />
   </React.StrictMode>,
   document.getElementById('root')
 );
