@@ -3,6 +3,7 @@ import "./App.css"
 import CardList from './components/CardList/CardList'
 import SearchBox from './components/SearchBox/SearchBox'
 import Scroll from "./components/Scroll/Scroll"
+import ErrorBoundry from './components/ErrorBoundry/ErrorBoundry';
 
 class App extends Component {
   constructor() {
@@ -42,7 +43,9 @@ class App extends Component {
         <div className="row align-self-center">
           <div className="col">
             <Scroll>
-              <CardList students={filteredStudents} />
+              <ErrorBoundry>
+                <CardList students={filteredStudents} />
+              </ErrorBoundry>  
             </Scroll>
           </div>
         </div>
