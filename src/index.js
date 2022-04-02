@@ -7,7 +7,7 @@ import thunkMiddleware from "redux-thunk";
 import { searchStudents, requestStudents } from "./reducers";
 import App from "./container/App";
 import reportWebVitals from "./reportWebVitals";
-import "./components/bootstrap.min.css";
+import "./css";
 
 const rootReducer = combineReducers({ searchStudents, requestStudents });
 const logger = createLogger();
